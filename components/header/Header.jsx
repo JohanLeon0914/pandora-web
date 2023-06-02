@@ -6,7 +6,6 @@ import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from "react-icons/ai";
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import Swal from "sweetalert2";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
@@ -49,11 +48,11 @@ function Navbar() {
     try {
       // Inicia sesión con Google
       await signInWithPopup(auth, provider);
-      Swal.fire({
-        icon: 'success',
-        title: '¡Sesión iniciada correctamente!',
-        text: 'Bienvenido'
-      });
+      // Swal.fire({
+      //   icon: 'success',
+      //   title: '¡Sesión iniciada correctamente!',
+      //   text: 'Bienvenido'
+      // });
     } catch (error) {
       console.error("Error al iniciar sesión", error);
     }
