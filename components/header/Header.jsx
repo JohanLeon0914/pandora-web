@@ -82,6 +82,15 @@ function Navbar() {
             <Link href="/">
               <li className="ml-10 text-sm uppercase hover:border-b"> Inicio </li>
             </Link>
+            <Link href="/chapters">
+              <li className="ml-10 text-sm uppercase hover:border-b"> Capitulos </li>
+            </Link>
+            <Link href="/chapters">
+              <li className="ml-10 text-sm uppercase hover:border-b"> Personajes </li>
+            </Link>
+            <Link href="/chapters">
+              <li className="ml-10 text-sm uppercase hover:border-b"> Mundo </li>
+            </Link>
           </ul>
           <div onClick={handleNav} className="md:hidden cursor-pointer p-5">
             <AiOutlineMenu size={25} />
@@ -130,6 +139,12 @@ function Navbar() {
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
                   {" "}
                   Inicio{" "}
+                </li>
+              </Link>
+              <Link href="/chapters">
+                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                  {" "}
+                  Chapters{" "}
                 </li>
               </Link>
             </ul>

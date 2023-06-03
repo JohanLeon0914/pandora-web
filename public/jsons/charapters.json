@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Pandora",
+        "description": "Pandora, una mujer de belleza inigualable y alma atormentada, es el epicentro de esta historia. Desobedeciendo a los dioses, su apertura de la caja maldita desencadena el caos en el mundo. Llena de culpa y deseosa de redención, Pandora emprende un viaje peligroso para enmendar su error. Con valentía y determinación, enfrenta los desafíos del camino mientras se sumerge en la oscuridad que ella misma liberó. A través de su transformación, Pandora descubre la fuerza de la esperanza y se convierte en un símbolo de lucha y redención en un mundo fragmentado.",
+        "imageUrl": "/images/pandora2.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Helena",
+        "description": "Helena, una joven de 21 años, reside en el reino de Tanato. Se destaca por su amabilidad y su constante voluntad de ayudar a los demás, especialmente al repartir medicinas entre los habitantes del reino. A pesar de su generosidad, Helena lucha con la inseguridad y la falta de autoestima, lo que a menudo la lleva a ser indecisa. Sin embargo, posee un corazón valiente que le permite enfrentar los desafíos junto a sus seres queridos. Su determinación inquebrantable la impulsa a trabajar incansablemente para mejorar la vida de su familia y amigos, siendo capaz de sacrificarlo todo en pos de ese objetivo.",
+        "imageUrl": "/images/helena.jpg"
+    }
+]
