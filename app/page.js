@@ -80,7 +80,7 @@ function Page() {
             {charapters.map((charapter) => {
               return (
                 <div
-                  className="bg-[#141414] rounded-lg shadow-lg hover:scale-105"
+                  className="bg-[#141414] rounded-lg shadow-lg hover:scale-105 text-white"
                   key={charapter.id}
                 >
                   <img
