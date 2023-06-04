@@ -2,10 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import charaptertsJson from "../public/jsons/charapters.json";
+import wordJson from '../public/jsons/world.json';
 
 function Page() {
   const [charapters, setCharapters] = useState(charaptertsJson);
-  console.log(charapters);
+  const [worldPlaces, setWorldPlaces] = useState(wordJson);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="max-w-6xl p-8">
@@ -105,6 +107,28 @@ function Page() {
             Conoce al <span className="text-red-500">mundo</span>
           </h2>
           <hr className="border-t-2 border-gray-300 m-2" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+            {worldPlaces.map((worldPlace) => {
+              return (
+                <div
+                  className="bg-[#141414] rounded-lg shadow-lg hover:scale-105 text-white"
+                  key={worldPlace.id}
+                >
+                  <img
+                    src={worldPlace.imageUrl}
+                    alt={worldPlace.name}
+                    className="w-full h-auto rounded-t-lg"
+                  />
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold mb-4 text-center">
+                      {worldPlace.name}
+                    </h2>
+                    <p>{worldPlace.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

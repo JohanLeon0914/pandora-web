@@ -2,6 +2,19 @@
     {
         "id": 1,
         "name": "Reyno de Tanato",
-        "description": "description"
+        "description": "El Reino de Tanato se caracteriza por ser un ambiente extremadamente opresivo y conservador, especialmente en lo que respecta al avance científico y médico. Las tradiciones arraigadas y una mentalidad cerrada limitan el progreso y la innovación en el ámbito de la medicina. Las reglas y normas impuestas por el reino son estrictas y cualquier transgresión puede tener consecuencias graves, incluso la ejecución pública. Bajo este sistema autoritario, los habitantes de Tanato viven en constante temor y restricción. El régimen opresivo ejerce un control férreo sobre la sociedad, imponiendo un orden social rígido y castigos severos para aquellos que desafíen las normas establecidas. El miedo a las represalias públicas y la violencia sistemática perpetúan el clima de opresión y sumisión en el reino. El Reino de Tanato se presenta como un escenario oscuro y asfixiante, donde la libertad de pensamiento y acción está severamente restringida. La opresión y la ejecución pública son herramientas utilizadas por el régimen para mantener el control sobre los habitantes, generando un clima de miedo y desesperanza.",
+        "imageUrl": "images/world/tanato.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Reyno de Iso",
+        "description": "El Reino de Iso se destaca por su estética asiática y se diferencia notoriamente del conservadurismo opresivo de Tanato. Este reino ha logrado establecer una sociedad más abierta y progresista, fomentando el avance científico y la medicina como pilares fundamentales de su desarrollo. En Iso, se valora y promueve la innovación y el conocimiento científico. Los habitantes tienen una mentalidad más receptiva hacia nuevas ideas y tecnologías, lo que ha permitido un rápido avance en el campo de la medicina. La investigación y el desarrollo de tratamientos médicos más efectivos son incentivados y apoyados por el reino. La libertad de pensamiento y expresión son valores fundamentales en Iso, lo que crea un ambiente propicio para el intercambio de ideas y el crecimiento intelectual. Los avances en medicina se ven reflejados en una atención sanitaria de calidad y en la mejora constante de la calidad de vida de sus habitantes.",
+        "imageUrl": "images/world/iso.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Reyno de Miria",
+        "description": "El Reino de Miria, con su estilo selvático y construcciones que evocan la grandeza de las antiguas civilizaciones mayas o aztecas, se caracteriza por una mentalidad basada en la ley del más fuerte. Dividido en pequeñas colonias, este reino está inmerso en una constante competencia por los recursos, lo que lleva a enfrentamientos violentos entre sí. Los habitantes de Miria son conocidos por su orgullo desmedido y arraigadas tradiciones que pueden ser consideradas salvajes por algunos. En Miria, la fortaleza física y la capacidad de lucha son altamente valoradas. Aquellos que demuestran ser soldados más fuertes son enviados a la guerra contra los otros reinos, en busca de la conquista y el dominio de sus territorios. La sociedad de Miria se rige por un sistema jerárquico basado en la supremacía de los guerreros más poderosos. Las construcciones rudimentarias y el ambiente selvático de Miria evocan una sensación primitiva y mística. Las tradiciones ancestrales se entrelazan con rituales y costumbres que pueden resultar chocantes para aquellos que no están familiarizados con ellas. Sin embargo, para los habitantes de Miria, estas tradiciones son parte integral de su identidad y están arraigadas en su historia y creencias.",
+        "imageUrl": "images/world/miria.jpg"
     }
 ]

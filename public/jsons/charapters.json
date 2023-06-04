@@ -3,24 +3,24 @@
         "id": 1,
         "name": "Pandora",
         "description": "Pandora, una mujer de belleza inigualable y alma atormentada, es el epicentro de esta historia. Desobedeciendo a los dioses, su apertura de la caja maldita desencadena el caos en el mundo. Llena de culpa y deseosa de redención, Pandora emprende un viaje peligroso para enmendar su error. Con valentía y determinación, enfrenta los desafíos del camino mientras se sumerge en la oscuridad que ella misma liberó. A través de su transformación, Pandora descubre la fuerza de la esperanza y se convierte en un símbolo de lucha y redención en un mundo fragmentado.",
-        "imageUrl": "/images/pandora2.jpg"
+        "imageUrl": "/images/charapters/pandora2.jpg"
     },
     {
         "id": 2,
         "name": "Helena",
         "description": "Helena, una joven de 21 años, reside en el reino de Tanato. Se destaca por su amabilidad y su constante voluntad de ayudar a los demás, especialmente al repartir medicinas entre los habitantes del reino. A pesar de su generosidad, Helena lucha con la inseguridad y la falta de autoestima, lo que a menudo la lleva a ser indecisa. Sin embargo, posee un corazón valiente que le permite enfrentar los desafíos junto a sus seres queridos. Su determinación inquebrantable la impulsa a trabajar incansablemente para mejorar la vida de su familia y amigos, siendo capaz de sacrificarlo todo en pos de ese objetivo.",
-        "imageUrl": "/images/helena.jpg"
+        "imageUrl": "/images/charapters/helena.jpg"
     },
     {
         "id": 3,
         "name": "Egan",
         "description": "Egan, un joven de 19 años, encarna el espíritu aventurero y apasionado. Siempre disfruta de la compañía de sus seres queridos y encuentra en su amiga Helena una aliada en la noble tarea de entregar medicinas en su reino. Egan se destaca por ser un trabajador incansable, dispuesto a emplear cada hora del día en su labor si fuese necesario. Su mayor motivación radica en ayudar a los habitantes de su pueblo y brindarles una vida de mayor calidad. Además, siente una atracción irrefrenable hacia la idea de escapar del opresivo reino y dedicarse plenamente al trabajo que tanto ama, buscando así encontrar su plenitud y libertad personal. Con su dedicación y valentía, Egan se convierte en un faro de esperanza para sus amigos y en un símbolo de lucha contra la adversidad que enfrentan diariamente.",
-        "imageUrl": "/images/egan.jpg"
+        "imageUrl": "/images/charapters/egan.jpg"
     },
     {
         "id": 4,
         "name": "Bastian",
         "description": "Bastian, un hombre maduro de 32 años, se destaca como el médico principal encargado de estudiar y tratar las enfermedades y dolencias de los habitantes del reino. Como líder, es quien organiza meticulosamente la entrega de medicinas a través de un equipo de repartidores, entre ellos Helena y Egan. La medicina, el cuerpo humano y la biología en general son sus pasiones inquebrantables. Con una dedicación sin igual, Bastian se enfrenta a las limitaciones impuestas por su entorno, perseverando incansablemente en su misión de brindar el mejor cuidado posible y ayudar a curar a cuantas personas pueda. Su resiliencia y determinación lo impulsan a superar obstáculos, encontrando soluciones creativas para sortear las dificultades que se le presentan.",
-        "imageUrl": "/images/bastian.jpg"
+        "imageUrl": "/images/charapters/bastian.jpg"
     }
 ]
