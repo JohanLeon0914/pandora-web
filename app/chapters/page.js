@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image'
-import {getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc} from 'firebase/firestore'
+import { getFirestore, collection, getDocs } from 'firebase/firestore'
 import { firebaseApp } from '../../firebase/config'
 import { useEffect, useState } from 'react';
 import ChapterCard from '@/components/chapterCard/Card';

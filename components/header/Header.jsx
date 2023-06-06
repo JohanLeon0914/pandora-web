@@ -6,6 +6,7 @@ import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from "react-icons/ai";
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import Swal from "sweetalert2";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
@@ -36,8 +37,7 @@ function Navbar() {
 
   const handleLogout = () => {
     signOut(auth)
-      .then(() => {
-      })
+      .then(() => {})
       .catch((error) => {
         console.log("Error al cerrar sesión:", error);
       });
@@ -48,11 +48,11 @@ function Navbar() {
     try {
       // Inicia sesión con Google
       await signInWithPopup(auth, provider);
-      // Swal.fire({
-      //   icon: 'success',
-      //   title: '¡Sesión iniciada correctamente!',
-      //   text: 'Bienvenido'
-      // });
+      Swal.fire({
+        icon: "success",
+        title: "¡Sesión iniciada correctamente!",
+        text: "Bienvenido",
+      });
     } catch (error) {
       console.error("Error al iniciar sesión", error);
     }
@@ -80,11 +80,35 @@ function Navbar() {
         <div>
           <ul className="hidden md:flex">
             <Link href="/">
-              <li className="ml-10 text-sm uppercase hover:border-b"> Inicio </li>
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                {" "}
+                Inicio{" "}
+              </li>
             </Link>
             <Link href="/chapters">
-              <li className="ml-10 text-sm uppercase hover:border-b"> Capitulos </li>
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                {" "}
+                Capitulos{" "}
+              </li>
             </Link>
+            {user ? (
+              <Link href="/create-chapter">
+                <li className="ml-10 text-sm uppercase hover:border-b">
+                  Crear capitulo{" "}
+                </li>
+              </Link>
+            ) : (
+              <div></div>
+            )}
+            {user ? (
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                <button onClick={handleLogout}>Cerrar sesión</button>
+              </li>
+            ) : (
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                <button onClick={handleLogin}>Iniciar sesión</button>
+              </li>
+            )}
           </ul>
           <div onClick={handleNav} className="md:hidden cursor-pointer p-5">
             <AiOutlineMenu size={25} />
@@ -141,6 +165,24 @@ function Navbar() {
                   Capitulos{" "}
                 </li>
               </Link>
+              {user ? (
+                <Link href="/create-chapter">
+                  <li className="ml-10 text-sm uppercase hover:border-b">
+                    Crear capitulo{" "}
+                  </li>
+                </Link>
+              ) : (
+                <div></div>
+              )}
+              {user ? (
+                <li className="py-4 text-sm">
+                  <button onClick={handleLogout}>Cerrar sesión</button>
+                </li>
+              ) : (
+                <li className="py-4 text-sm">
+                  <button onClick={handleLogin}>Iniciar sesión</button>
+                </li>
+              )}
             </ul>
           </div>
         </div>
