@@ -91,7 +91,7 @@ function Navbar() {
                 Capitulos{" "}
               </li>
             </Link>
-            {user ? (
+            {/* {user ? (
               <Link href="/create-chapter">
                 <li className="ml-10 text-sm uppercase hover:border-b">
                   Crear capitulo{" "}
@@ -99,7 +99,7 @@ function Navbar() {
               </Link>
             ) : (
               <div></div>
-            )}
+            )} */}
             {user ? (
               <li className="ml-10 text-sm uppercase hover:border-b">
                 <button onClick={handleLogout}>Cerrar sesión</button>
@@ -165,7 +165,7 @@ function Navbar() {
                   Capitulos{" "}
                 </li>
               </Link>
-              {user ? (
+              {/* {user ? (
                 <Link href="/create-chapter">
                   <li className="ml-10 text-sm uppercase hover:border-b">
                     Crear capitulo{" "}
@@ -173,7 +173,7 @@ function Navbar() {
                 </Link>
               ) : (
                 <div></div>
-              )}
+              )} */}
               {user ? (
                 <li className="py-4 text-sm">
                   <button onClick={handleLogout}>Cerrar sesión</button>
