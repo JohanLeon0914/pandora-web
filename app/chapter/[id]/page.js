@@ -220,15 +220,15 @@ const Chapter = ({ params }) => {
           <p className="text-lg">{chapter.description}</p>
           <div className="flex items-center justify-center p-2">
             <button
-              className={`bg-white p-2 rounded-lg mr-4 hover:scale-110 ${
-                hasUserLikedChapter() ? "bg-red-500" : ""
+              className={`p-2 rounded-lg mr-4 hover:scale-110 ${
+                hasUserLikedChapter() ? "text-red-500" : ""
               }`}
               onClick={handleLike}
             >
               <BsHeartFill
-                className={`text-red-500 ${
-                  hasUserLikedChapter() ? "text-white" : ""
-                }`}
+                className={`${
+                  hasUserLikedChapter() ? "text-red-500" : "text-white"
+                } text-2xl`}
               />
             </button>
             <div className="text-lg font-bold">Likes: {likes.length}</div>
