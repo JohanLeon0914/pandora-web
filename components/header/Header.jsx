@@ -7,11 +7,14 @@ import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Swal from "sweetalert2";
+import { firebaseApp } from "../../firebase/config";
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [user, setUser] = useState(null);
+  const [admins, setAdmins] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +28,20 @@ function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const db = getFirestore(firebaseApp);
+      const querySnapshot = await getDocs(collection(db, "admin"));
+      const docs = [];
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setAdmins(docs);
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -62,6 +79,12 @@ function Navbar() {
     setNav(!nav);
   };
 
+  const isAdmin = () => {
+    return admins?.find((admin) => {
+      return admin.email === user.email;
+    });
+  };
+
   return (
     <div
       className={`fixed w-full h-20 z-[100] ${
@@ -91,15 +114,13 @@ function Navbar() {
                 Capitulos{" "}
               </li>
             </Link>
-            {/* {user ? (
+            {user && isAdmin() && (
               <Link href="/create-chapter">
                 <li className="ml-10 text-sm uppercase hover:border-b">
                   Crear capitulo{" "}
                 </li>
               </Link>
-            ) : (
-              <div></div>
-            )} */}
+            )}
             {user ? (
               <li className="ml-10 text-sm uppercase hover:border-b">
                 <button onClick={handleLogout}>Cerrar sesión</button>
@@ -165,15 +186,14 @@ function Navbar() {
                   Capitulos{" "}
                 </li>
               </Link>
-              {/* {user ? (
+              {user && isAdmin() && (
                 <Link href="/create-chapter">
-                  <li className="ml-10 text-sm uppercase hover:border-b">
+                  <li onClick={() => setNav(false)} className="py-4 text-sm">
+                    {" "}
                     Crear capitulo{" "}
                   </li>
                 </Link>
-              ) : (
-                <div></div>
-              )} */}
+              )}
               {user ? (
                 <li className="py-4 text-sm">
                   <button onClick={handleLogout}>Cerrar sesión</button>

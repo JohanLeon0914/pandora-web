@@ -66,8 +66,7 @@ const Chapter = ({ params }) => {
     } else {
       Swal.fire({
         icon: "info",
-        title:
-          "Debes iniciar sesión para poder comentar en los capítulos.",
+        title: "Debes iniciar sesión para poder comentar en los capítulos.",
         text: "",
       });
     }
@@ -279,15 +278,18 @@ const Chapter = ({ params }) => {
             <span className="text-red-500">Comentarios</span>
           </h2>
           {comments.map((comment) => (
-            <div key={comment.id} className="flex items-start mb-4">
-              <div className="bg-gray-200 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+            <div
+              key={comment.id}
+              className="flex flex-row items-start mb-4"
+            >
+              <div className="bg-gray-200 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
                 <span className="text-gray-800 text-lg font-bold">
                   {comment.usuario_name.charAt(0)}
                 </span>
               </div>
               <div className="max-w-md">
-                <p className="text-gray-800 font-bold">
-                  {comment.usuario_name}
+                <p className="text-gray-800 font-bold flex items-center">
+                  <span className="mr-2">{comment.usuario_name}</span>
                 </p>
                 <p className="text-gray-600 break-words max-h-48 overflow-y-auto">
                   {comment.comment}
