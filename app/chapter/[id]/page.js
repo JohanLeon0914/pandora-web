@@ -288,7 +288,7 @@ const Chapter = ({ params }) => {
           });
           fetchReads();
         } catch (error) {
-          console.log("Error al eliminar el favorito:", error);
+          console.log("Error al eliminar el leído:", error);
         }
         return;
       }
@@ -302,12 +302,12 @@ const Chapter = ({ params }) => {
         });
         fetchReads();
       } catch (error) {
-        console.log("Error al agregar el favorito:", error);
+        console.log("Error al agregar el leído:", error);
       }
     } else {
       Swal.fire({
         icon: "info",
-        title: "Debes iniciar sesión para poder agregar capítulos a tu lista de leidos.",
+        title: "Debes iniciar sesión para poder agregar capítulos a tu lista de leídos.",
         text: "",
       });
     }
