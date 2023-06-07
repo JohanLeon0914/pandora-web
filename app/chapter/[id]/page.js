@@ -258,7 +258,7 @@ const Chapter = ({ params }) => {
     } else {
       Swal.fire({
         icon: "info",
-        title: "Debes iniciar sesión para poder agregar capítulos a favoritos.",
+        title: "Debes iniciar sesión para poder agregar capítulos a tu lista de favoritos.",
         text: "",
       });
     }
@@ -307,7 +307,7 @@ const Chapter = ({ params }) => {
     } else {
       Swal.fire({
         icon: "info",
-        title: "Debes iniciar sesión para poder agregar capítulos a favoritos.",
+        title: "Debes iniciar sesión para poder agregar capítulos a tu lista de leidos.",
         text: "",
       });
     }
