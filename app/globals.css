@@ -6,7 +6,7 @@
 /* HTML, body, heading */
 @layer base {
   body {
-      @apply bg-[#141414] text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
+      @apply bg-[#000] text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
   }
   header {
       @apply fixed top-0 z-50 flex w-full items-center justify-between
@@ -41,14 +41,4 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }

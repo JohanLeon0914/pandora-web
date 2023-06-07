@@ -63,6 +63,13 @@ const Chapter = ({ params }) => {
       } catch (error) {
         console.log("Error al agregar el comentario:", error);
       }
+    } else {
+      Swal.fire({
+        icon: "info",
+        title:
+          "Debes iniciar sesión para poder comentar en los capítulos.",
+        text: "",
+      });
     }
     setComment(""); // Reiniciar el campo de comentario después de enviarlo
   };
@@ -196,11 +203,6 @@ const Chapter = ({ params }) => {
     fetchLikes(); // Obtener los likes al cargar el capítulo inicialmente
     fetchCommits(); // Obtener los comentarios al cargar el capítulo inicialmente
   }, []);
-
-  const isTheComment = (editComment, comment) => {
-    console.log(editComment, comment);
-    return false;
-  };
 
   if (!chapter) {
     return <div>Loading...</div>;
