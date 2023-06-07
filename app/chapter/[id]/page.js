@@ -5,6 +5,7 @@ import { firebaseApp } from "../../../firebase/config";
 import { auth } from "../../../firebase/config";
 import Swal from "sweetalert2";
 import { BsHeartFill } from "react-icons/bs";
+import { VscCheckAll, VscFlame } from "react-icons/vsc";
 import {
   doc,
   getDoc,
@@ -22,10 +23,19 @@ const Chapter = ({ params }) => {
   const [user, setUser] = useState(null);
   const [chapter, setChapter] = useState(null);
   const [likes, setLikes] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [reads, setReads] = useState([]);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const hasUserLikedChapter = () => {
-    if (user) return likes.some((like) => like.email === user.email);
+    if (user) return likes.some((read) => read.email === user.email);
+  };
+  const hasUserFavoritedChapter = () => {
+    if (user)
+      return favorites.some((favorite) => favorite.email === user.email);
+  };
+  const hasUserReadedChapter = () => {
+    if (user) return reads.some((read) => read.email === user.email);
   };
   const [editingComment, setEditingComment] = useState({
     id: "",
@@ -86,6 +96,42 @@ const Chapter = ({ params }) => {
         docs.push({ ...doc.data(), id: doc.id });
       });
       setLikes(docs);
+    } catch (error) {
+      console.log("Error al obtener los likes:", error);
+    }
+  };
+
+  const fetchFavorites = async () => {
+    try {
+      const db = getFirestore(firebaseApp);
+      const favoritesCollectionRef = collection(
+        doc(db, "chapters", params.id),
+        "favorites"
+      );
+      const querySnapshot = await getDocs(favoritesCollectionRef);
+      const docs = [];
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setFavorites(docs);
+    } catch (error) {
+      console.log("Error al obtener los likes:", error);
+    }
+  };
+
+  const fetchReads = async () => {
+    try {
+      const db = getFirestore(firebaseApp);
+      const readsCollectionRef = collection(
+        doc(db, "chapters", params.id),
+        "reads"
+      );
+      const querySnapshot = await getDocs(readsCollectionRef);
+      const docs = [];
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setReads(docs);
     } catch (error) {
       console.log("Error al obtener los likes:", error);
     }
@@ -169,6 +215,104 @@ const Chapter = ({ params }) => {
     }
   };
 
+  const handleFavorite = async () => {
+    if (user) {
+      if (hasUserFavoritedChapter()) {
+        try {
+          const db = getFirestore(firebaseApp);
+          const favoritesQuery = query(
+            collection(db, "chapters", params.id, "favorites"),
+            where("email", "==", user.email)
+          );
+          const favoritesSnapshot = await getDocs(favoritesQuery);
+          favoritesSnapshot.forEach((doc) => {
+            deleteDoc(doc.ref);
+          });
+          //eliminando en tabla user_favorite
+          const userFavoritesQuery = query(
+            collection(db, "user_favorites"),
+            where("user_email", "==", user.email)
+          );
+          const userFavoritesSnapshot = await getDocs(userFavoritesQuery);
+          userFavoritesSnapshot.forEach((doc) => {
+            deleteDoc(doc.ref);
+          });
+          fetchFavorites();
+        } catch (error) {
+          console.log("Error al eliminar el favorito:", error);
+        }
+        return;
+      }
+      try {
+        const db = getFirestore(firebaseApp);
+        const favoritesRef = collection(db, "chapters", params.id, "favorites");
+        await addDoc(favoritesRef, { email: user.email });
+        await addDoc(collection(db, "user_favorites"), {
+          chapter_id: params.id,
+          user_email: user.email,
+        });
+        fetchFavorites();
+      } catch (error) {
+        console.log("Error al agregar el favorito:", error);
+      }
+    } else {
+      Swal.fire({
+        icon: "info",
+        title: "Debes iniciar sesión para poder agregar capítulos a favoritos.",
+        text: "",
+      });
+    }
+  };
+
+  const handleReads = async () => {
+    if (user) {
+      if (hasUserReadedChapter()) {
+        try {
+          const db = getFirestore(firebaseApp);
+          const readsQuery = query(
+            collection(db, "chapters", params.id, "reads"),
+            where("email", "==", user.email)
+          );
+          const readsSnapshot = await getDocs(readsQuery);
+          readsSnapshot.forEach((doc) => {
+            deleteDoc(doc.ref);
+          });
+          //eliminando en tabla user_read
+          const userReadsQuery = query(
+            collection(db, "user_reads"),
+            where("user_email", "==", user.email)
+          );
+          const userReadsSnapshot = await getDocs(userReadsQuery);
+          userReadsSnapshot.forEach((doc) => {
+            deleteDoc(doc.ref);
+          });
+          fetchReads();
+        } catch (error) {
+          console.log("Error al eliminar el favorito:", error);
+        }
+        return;
+      }
+      try {
+        const db = getFirestore(firebaseApp);
+        const readRef = collection(db, "chapters", params.id, "reads");
+        await addDoc(readRef, { email: user.email });
+        await addDoc(collection(db, "user_reads"), {
+          chapter_id: params.id,
+          user_email: user.email,
+        });
+        fetchReads();
+      } catch (error) {
+        console.log("Error al agregar el favorito:", error);
+      }
+    } else {
+      Swal.fire({
+        icon: "info",
+        title: "Debes iniciar sesión para poder agregar capítulos a favoritos.",
+        text: "",
+      });
+    }
+  };
+
   const handleSaveEdit = async () => {
     try {
       const db = getFirestore(firebaseApp);
@@ -200,7 +344,9 @@ const Chapter = ({ params }) => {
 
   useEffect(() => {
     fetchLikes(); // Obtener los likes al cargar el capítulo inicialmente
+    fetchFavorites(); // Obtener los favoritos al cargar el capítulo inicialmente
     fetchCommits(); // Obtener los comentarios al cargar el capítulo inicialmente
+    fetchReads();
   }, []);
 
   if (!chapter) {
@@ -219,20 +365,54 @@ const Chapter = ({ params }) => {
           </h1>
           <hr className="border-t-2 border-gray-300 mb-4" />
           <p className="text-lg">{chapter.description}</p>
-          <div className="flex items-center justify-center p-2">
-            <button
-              className={`p-2 rounded-lg mr-4 hover:scale-110 ${
-                hasUserLikedChapter() ? "text-red-500" : ""
-              }`}
-              onClick={handleLike}
-            >
-              <BsHeartFill
-                className={`${
-                  hasUserLikedChapter() ? "text-red-500" : "text-white"
-                } text-2xl`}
-              />
-            </button>
-            <div className="text-lg font-bold">Likes: {likes.length}</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center justify-center p-2">
+            <div className="flex items-center">
+              <button
+                className={`p-2 rounded-lg hover:scale-110 ${
+                  hasUserLikedChapter() ? "text-red-500" : ""
+                }`}
+                onClick={handleLike}
+              >
+                <BsHeartFill
+                  className={`${
+                    hasUserLikedChapter() ? "text-red-500" : "text-white"
+                  } text-2xl`}
+                />
+              </button>
+              <div className="text-lg font-bold ml-2">
+                Likes: {likes.length}
+              </div>
+            </div>
+            <div className="flex items-center">
+              <button
+                className={`p-2 rounded-lg hover:scale-110 ${
+                  hasUserReadedChapter() ? "text-red-500" : ""
+                }`}
+                onClick={handleReads}
+              >
+                <VscCheckAll
+                  className={`${
+                    hasUserReadedChapter() ? "text-blue-500" : "text-white"
+                  } text-2xl`}
+                />
+              </button>
+              <div className="text-lg font-bold ml-2">Leído</div>
+            </div>
+            <div className="flex items-center">
+              <button
+                className={`p-2 rounded-lg hover:scale-110 ${
+                  hasUserFavoritedChapter() ? "text-red-500" : ""
+                }`}
+                onClick={handleFavorite}
+              >
+                <VscFlame
+                  className={`${
+                    hasUserFavoritedChapter() ? "text-red-500" : "text-white"
+                  } text-2xl`}
+                />
+              </button>
+              <div className="text-lg font-bold ml-2">Favoritos</div>
+            </div>
           </div>
         </div>
       </div>
@@ -274,14 +454,11 @@ const Chapter = ({ params }) => {
               Enviar
             </button>
           </div>
-          <h2 className="text-4xl text-center mt-4 font-bold tracking-wide">
+          <h2 className="text-4xl text-center mt-4 font-bold tracking-wide p-4">
             <span className="text-red-500">Comentarios</span>
           </h2>
           {comments.map((comment) => (
-            <div
-              key={comment.id}
-              className="flex flex-row items-start mb-4"
-            >
+            <div key={comment.id} className="flex flex-row items-start mb-4 pt-2">
               <div className="bg-gray-200 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
                 <span className="text-gray-800 text-lg font-bold">
                   {comment.usuario_name.charAt(0)}
