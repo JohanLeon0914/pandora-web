@@ -149,7 +149,7 @@ const ProfileTab = () => {
             alt="Foto de perfil"
             className="w-24 h-24 rounded-full mb-4 mx-auto"
           />
-          <h2 className="text-xl text-black font-bold text-center">
+          <h2 className="text-xl text-white font-bold text-center">
             {user.displayName}
           </h2>
           <p className="text-gray-500 text-center">{user.email}</p>
@@ -231,8 +231,8 @@ const ProfileTab = () => {
                 </Link>
               ))
             ) : (
-              <p className="text-gray-500">
-                Aún no has agregado capítulos a tu lista de favoritos
+              <p className="text-gray-500 text-center">
+                Aún no has agregado capítulos a tu lista de Leídos
               </p>
             ))}
         </div>
