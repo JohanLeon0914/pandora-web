@@ -115,7 +115,7 @@ const Chapter = ({ params }) => {
       });
       setFavorites(docs);
     } catch (error) {
-      console.log("Error al obtener los likes:", error);
+      console.log("Error al obtener los favoritos:", error);
     }
   };
 

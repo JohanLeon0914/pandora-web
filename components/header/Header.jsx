@@ -122,6 +122,16 @@ function Navbar() {
               </Link>
             )}
             {user ? (
+              <Link href="/profile">
+              <li className="ml-10 text-sm uppercase hover:border-b">
+                Profile{" "}
+              </li>
+            </Link>
+            ) : (
+              <li>
+              </li>
+            )}
+            {user ? (
               <li className="ml-10 text-sm uppercase hover:border-b">
                 <button onClick={handleLogout}>Cerrar sesión</button>
               </li>
@@ -193,6 +203,17 @@ function Navbar() {
                     Crear capitulo{" "}
                   </li>
                 </Link>
+              )}
+              {user ? (
+                <Link href="/profile">
+                <li className="py-4 text-sm">
+                {" "}
+                    Perfil{" "}
+                </li>
+                </Link>
+              ) : (
+                <li>
+                </li>
               )}
               {user ? (
                 <li className="py-4 text-sm">
