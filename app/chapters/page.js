@@ -3,6 +3,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore'
 import { firebaseApp } from '../../firebase/config'
 import { useEffect, useState } from 'react';
 import ChapterCard from '@/components/chapterCard/Card';
+import Head from 'next/head';
 
 
 export default function Home() {
@@ -24,6 +25,9 @@ export default function Home() {
 
   return (
     <div className="container mx-auto p-4">
+      <Head>
+        <title>Capítulos | La caja de Pandora</title>
+      </Head>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-4">
         {chapters.map((chapter) => (
           <div key={chapter.id} className="w-full sm:w-auto md:w-auto lg:w-auto xl:max-w-2xl">

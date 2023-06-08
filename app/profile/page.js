@@ -12,6 +12,7 @@ import {
   where,
 } from "firebase/firestore";
 import Link from "next/link";
+import Head from "next/head";
 
 const ProfileTab = () => {
   const [user, setUser] = useState(null);
@@ -142,6 +143,9 @@ const ProfileTab = () => {
 
   return (
     <div>
+      <Head>
+        <title>Perfil | La caja de Pandora</title>
+      </Head>
       <div className="flex items-center justify-center">
         <div className="bg-[#141414] rounded-lg p-8 m-2">
           <img
@@ -149,7 +153,7 @@ const ProfileTab = () => {
             alt="Foto de perfil"
             className="w-24 h-24 rounded-full mb-4 mx-auto"
           />
-          <h2 className="text-xl text-white font-bold text-center">
+          <h2 className="text-xl text-gray-100 font-bold text-center">
             {user.displayName}
           </h2>
           <p className="text-gray-500 text-center">{user.email}</p>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import charaptertsJson from "../public/jsons/charapters.json";
 import wordJson from '../public/jsons/world.json';
+import Head from "next/head";
 
 function Page() {
   const [charapters, setCharapters] = useState(charaptertsJson);
@@ -10,6 +11,9 @@ function Page() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
+      <Head>
+        <title>Inicio | La caja de Pandora</title>
+      </Head>
       <div className="max-w-6xl p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex justify-center md:justify-start">

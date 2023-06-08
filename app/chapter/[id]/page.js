@@ -18,6 +18,7 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
+import Head from "next/head";
 
 const Chapter = ({ params }) => {
   const [user, setUser] = useState(null);
@@ -258,7 +259,8 @@ const Chapter = ({ params }) => {
     } else {
       Swal.fire({
         icon: "info",
-        title: "Debes iniciar sesión para poder agregar capítulos a tu lista de favoritos.",
+        title:
+          "Debes iniciar sesión para poder agregar capítulos a tu lista de favoritos.",
         text: "",
       });
     }
@@ -307,7 +309,8 @@ const Chapter = ({ params }) => {
     } else {
       Swal.fire({
         icon: "info",
-        title: "Debes iniciar sesión para poder agregar capítulos a tu lista de leídos.",
+        title:
+          "Debes iniciar sesión para poder agregar capítulos a tu lista de leídos.",
         text: "",
       });
     }
@@ -355,6 +358,9 @@ const Chapter = ({ params }) => {
 
   return (
     <div className="container mx-auto p-4">
+      <Head>
+        <title>Leer capitulo | La caja de Pandora</title>
+      </Head>
       <div className="flex flex-col md:flex-row items-center mb-4 gap-4">
         <div className="w-full md:w-1/2 mb-4 md:mb-0">
           <img src={chapter.urlImage} alt="Chapter Image" className="w-full" />
@@ -396,7 +402,13 @@ const Chapter = ({ params }) => {
                   } text-2xl`}
                 />
               </button>
-              <div className="text-lg font-bold ml-2">Leído</div>
+              <div
+                className={`text-lg font-bold ml-2 ${
+                  hasUserReadedChapter() ? "text-blue-500" : ""
+                }`}
+              >
+                Marcar como leído
+              </div>
             </div>
             <div className="flex items-center">
               <button
@@ -411,7 +423,13 @@ const Chapter = ({ params }) => {
                   } text-2xl`}
                 />
               </button>
-              <div className="text-lg font-bold ml-2">Favoritos</div>
+              <div
+                className={`text-lg font-bold ml-2 ${
+                  hasUserFavoritedChapter() ? "text-red-500" : ""
+                }`}
+              >
+                Marcar como favoritos
+              </div>
             </div>
           </div>
         </div>
@@ -458,7 +476,10 @@ const Chapter = ({ params }) => {
             <span className="text-red-500">Comentarios</span>
           </h2>
           {comments.map((comment) => (
-            <div key={comment.id} className="flex flex-row items-start mb-4 pt-2">
+            <div
+              key={comment.id}
+              className="flex flex-row items-start mb-4 pt-2"
+            >
               <div className="bg-gray-200 rounded-full h-10 w-10 flex items-center justify-center mr-4 flex-shrink-0">
                 <span className="text-gray-800 text-lg font-bold">
                   {comment.usuario_name.charAt(0)}
