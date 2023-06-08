@@ -11,9 +11,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        pattern: "url('/images/what-the-hex-dark.png')",
+      },
+      backgroundRepeat: {
+        repeat: "repeat",
       },
       fontFamily: {
         sans: ['var(--font-inter)'],

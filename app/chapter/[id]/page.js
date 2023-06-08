@@ -465,10 +465,10 @@ const Chapter = ({ params }) => {
                 </span>
               </div>
               <div className="max-w-md">
-                <p className="text-gray-800 font-bold flex items-center">
+                <p className="text-gray-100 font-bold flex items-center">
                   <span className="mr-2">{comment.usuario_name}</span>
                 </p>
-                <p className="text-gray-600 break-words max-h-48 overflow-y-auto">
+                <p className="text-gray-500 break-words max-h-48 overflow-y-auto">
                   {comment.comment}
                 </p>
                 {user && comment.usuario_email === user.email && (
