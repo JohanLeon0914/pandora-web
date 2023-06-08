@@ -124,7 +124,7 @@ function Navbar() {
             {user ? (
               <Link href="/profile">
               <li className="ml-10 text-sm uppercase hover:border-b">
-                Profile{" "}
+                Perfil{" "}
               </li>
             </Link>
             ) : (
