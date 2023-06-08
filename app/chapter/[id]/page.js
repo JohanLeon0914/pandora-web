@@ -371,7 +371,7 @@ const Chapter = ({ params }) => {
           </h1>
           <hr className="border-t-2 border-gray-300 mb-4" />
           <p className="text-lg">{chapter.description}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center justify-center p-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 items-center justify-center p-2">
             <div className="flex items-center">
               <button
                 className={`p-2 rounded-lg hover:scale-110 ${
@@ -385,9 +385,7 @@ const Chapter = ({ params }) => {
                   } text-2xl`}
                 />
               </button>
-              <div className="text-lg font-bold ml-2">
-                Likes: {likes.length}
-              </div>
+              <div className="text-lg font-bold">Likes: {likes.length}</div>
             </div>
             <div className="flex items-center">
               <button
@@ -403,7 +401,7 @@ const Chapter = ({ params }) => {
                 />
               </button>
               <div
-                className={`text-lg font-bold ml-2 ${
+                className={`text-lg font-bold ${
                   hasUserReadedChapter() ? "text-blue-500" : ""
                 }`}
               >
@@ -424,7 +422,7 @@ const Chapter = ({ params }) => {
                 />
               </button>
               <div
-                className={`text-lg font-bold ml-2 ${
+                className={`text-lg font-bold ${
                   hasUserFavoritedChapter() ? "text-red-500" : ""
                 }`}
               >
