@@ -1,7 +1,7 @@
 import ProfileTab from "@/components/profile/Profile";
 export const metadata = {
   title: {
-    absolute: "Perfil",
+    absolute: "Perfil | La Caja de Pandora",
   },
 };
 

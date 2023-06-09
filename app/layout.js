@@ -24,13 +24,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/images/logo_pandora.png"
-        />
-      </Head>
       <body className={`${inter.variable} font-sans`}>
         <Header />
         <div className="pt-20">{children}</div>

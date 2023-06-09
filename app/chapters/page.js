@@ -2,7 +2,7 @@ import ChaptersComponent from "@/components/ChaptersComponent/ChaptersComponent"
 
 export const metadata = {
   title: {
-    absolute: "Capitulos",
+    absolute: "Capitulos | La Caja de Pandora",
   },
 };
 
