@@ -18,7 +18,11 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
-import Head from "next/head";
+export const metadata = {
+  title: {
+    absolute: "Leer capitulo",
+  },
+};
 
 const Chapter = ({ params }) => {
   const [user, setUser] = useState(null);
@@ -358,9 +362,6 @@ const Chapter = ({ params }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <Head>
-        <title>Leer capitulo | La caja de Pandora</title>
-      </Head>
       <div className="flex flex-col md:flex-row items-center mb-4 gap-4">
         <div className="w-full md:w-1/2 mb-4 md:mb-0">
           <img src={chapter.urlImage} alt="Chapter Image" className="w-full" />

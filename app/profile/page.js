@@ -12,7 +12,12 @@ import {
   where,
 } from "firebase/firestore";
 import Link from "next/link";
-import Head from "next/head";
+
+export const metadata = {
+  title: {
+    absolute: "Perfil",
+  },
+};
 
 const ProfileTab = () => {
   const [user, setUser] = useState(null);
@@ -143,9 +148,6 @@ const ProfileTab = () => {
 
   return (
     <div>
-      <Head>
-        <title>Perfil | La caja de Pandora</title>
-      </Head>
       <div className="flex items-center justify-center">
         <div className="bg-[#141414] rounded-lg p-8 m-2">
           <img

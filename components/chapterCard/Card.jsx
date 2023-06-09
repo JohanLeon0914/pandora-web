@@ -15,10 +15,6 @@ const ChapterCard = ({ chapter }) => {
     setIsHovered(false);
   };
 
-  const cardClassName = `max-w-xl rounded-lg overflow-hidden shadow-lg m-4 cursor-pointer ${
-    isHovered ? 'hover:scale-105' : ''
-  }`;
-
   return (
     <Link
       onMouseEnter={handleMouseEnter}
@@ -27,8 +23,8 @@ const ChapterCard = ({ chapter }) => {
         pathname: '/chapter/' + chapter.id,
       }}
     >
-      <div className={cardClassName}>
-        <img className="w-full" src={chapter.urlImage} alt="Chapter" />
+      <div className='max-w-xl rounded-lg overflow-hidden shadow-lg m-4 cursor-pointer'>
+        <img className="w-full h-auto rounded-t-lg" src={chapter.urlImage} alt="Chapter" />
         <div className="px-6 py-4">
           <div className="font-bold text-lg mb-2"><b>{chapter.title}</b></div>
           <p className="text-gray-200 text-base">{chapter.description}</p>

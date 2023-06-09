@@ -2,18 +2,19 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import charaptertsJson from "../public/jsons/charapters.json";
-import wordJson from '../public/jsons/world.json';
-import Head from "next/head";
+import wordJson from "../public/jsons/world.json";
 
-function Page() {
+export const metadata = {
+  title: "Inicio",
+};
+
+
+export default function Home() {
   const [charapters, setCharapters] = useState(charaptertsJson);
   const [worldPlaces, setWorldPlaces] = useState(wordJson);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <Head>
-        <title>Inicio | La caja de Pandora</title>
-      </Head>
       <div className="max-w-6xl p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex justify-center md:justify-start">
@@ -139,4 +140,3 @@ function Page() {
   );
 }
 
-export default Page;
