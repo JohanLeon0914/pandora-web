@@ -13,7 +13,47 @@
       @apply fixed top-0 z-50 flex w-full items-center justify-between
       px-4 py-4 transition-all lg:px-10 lg:py-6;
   }
+  
+}
 
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.searchBox {
+  position: relative;
+}
+
+.searchButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 15%;
+
+  border: none;
+  background: none;
+  color: black;
+}
+
+.searchInput {
+  font-size: 1.2rem;
+  height: 35px;
+  width: 300px;
+  border-radius: 10px;
+  padding: 5px 30px 5px 10px;
+  border: 1px solid white;
+  color: black;
+}
+
+.searchInput:focus,
+.searchButton:focus {
+  outline: none;
+  border: 1px solid #f88ec2;
+  box-shadow: 0 0 5px #ebbed4;
 }
 
 /* Para tamaños de pantalla móvil */
