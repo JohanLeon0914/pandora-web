@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { firebaseApp } from "@/firebase/config";
 import { auth } from "@/firebase/config";
 import Swal from "sweetalert2";
 import { BsHeartFill } from "react-icons/bs";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { VscCheckAll, VscFlame } from "react-icons/vsc";
 import {
   doc,
@@ -27,6 +29,7 @@ const Chapter = ({ params }) => {
   const [reads, setReads] = useState([]);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const router = useRouter();
   const hasUserLikedChapter = () => {
     if (user) return likes.some((read) => read.email === user.email);
   };
@@ -344,6 +347,55 @@ const Chapter = ({ params }) => {
     }
   };
 
+  const [chapters, setChapters] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const db = getFirestore(firebaseApp);
+      const querySnapshot = await getDocs(collection(db, "chapters"));
+      const docs = [];
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setChapters(docs);
+    };
+
+    fetchData();
+  }, [chapters]);
+
+  const handlePreviousChapter = (currentChapter) => {
+    // Obtener el índice actual del capítulo
+    const currentIndex = chapters.findIndex(
+      (c) => c.title === currentChapter.title
+    );
+    if (currentIndex < chapters.length - 1) {
+      const previousChapterId = chapters[currentIndex + 1].id;
+      router.push(`/chapter/${previousChapterId}`);
+    }
+  };
+
+  const handleNextChapter = (currentChapter) => {
+    // Obtener el índice actual del capítulo
+    const currentIndex = chapters.findIndex(
+      (c) => c.title === currentChapter.title
+    );
+    if (currentIndex > 0) {
+      const nextChapterId = chapters[currentIndex - 1].id;
+      router.push(`/chapter/${nextChapterId}`);
+    }
+  };
+
+  const isFirstChapter = (currentChapter) => {
+    return (
+      chapters.length > 0 &&
+      currentChapter.title === chapters[chapters.length - 1].title
+    );
+  };
+
+  const isLastChapter = (currentChapter) => {
+    return chapters.length > 0 && currentChapter.title === chapters[0].title;
+  };
+
   useEffect(() => {
     fetchLikes(); // Obtener los likes al cargar el capítulo inicialmente
     fetchFavorites(); // Obtener los favoritos al cargar el capítulo inicialmente
@@ -427,6 +479,27 @@ const Chapter = ({ params }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex items-center justify-center">
+        {!isFirstChapter(chapter) && (
+          <button
+            className="flex items-center gap-2 p-2 rounded-lg hover:scale-110 bg-gray-900 text-white"
+            onClick={() => handlePreviousChapter(chapter)}
+          >
+            <BsArrowLeft className="text-2xl" />
+            <span>Ver capítulo anterior</span>
+          </button>
+        )}
+        <div className="flex-grow"></div>
+        {!isLastChapter(chapter) && (
+          <button
+            className="flex items-center gap-2 p-2 rounded-lg hover:scale-110 bg-gray-900 text-white"
+            onClick={() => handleNextChapter(chapter)}
+          >
+            <span>Ver capítulo siguiente</span>
+            <BsArrowRight className="text-2xl" />
+          </button>
+        )}
       </div>
       {chapter.urlDoc && (
         <div className="mt-4">
